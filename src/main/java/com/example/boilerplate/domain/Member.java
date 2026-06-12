@@ -21,8 +21,7 @@ public class Member {
   // 💡 [추가] 한 줄 소개 필드
   private String bio = "";
 
-  public Member() {
-  }
+  public Member() {}
 
   public Member(String username, String password) {
     this.username = username;

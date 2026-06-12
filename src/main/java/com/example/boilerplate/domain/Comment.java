@@ -23,8 +23,7 @@ public class Comment {
 
   private LocalDateTime createdAt;
 
-  public Comment() {
-  }
+  public Comment() {}
 
   public Comment(String content, InstagramPost post, Member author) {
     this.content = content;

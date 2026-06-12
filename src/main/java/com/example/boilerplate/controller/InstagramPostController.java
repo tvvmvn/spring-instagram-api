@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "2. 피드 제어 (Feed)", description = "인증된 사용자의 사진 업로드 및 피드 게시 기능을 관리합니다.")
 @RestController
-@RequestMapping("/api/instagram/posts")
+@RequestMapping("/api/instagram/posts")//prefix
 public class InstagramPostController {
 
   private final InstagramPostService instagramPostService;
@@ -52,9 +52,7 @@ public class InstagramPostController {
           username);
 
       return ResponseEntity.status(HttpStatus.CREATED)
-          .body(Map.of(
-              "message", "인스타그램 피드가 무사히 게시되었습니다.",
-              "postId", postId));
+          .body(Map.of("message", "피드가 성공적으로 게시되었습니다.", "postId", postId));
 
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

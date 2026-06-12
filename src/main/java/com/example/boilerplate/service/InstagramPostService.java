@@ -36,10 +36,10 @@ public class InstagramPostService {
   private final PostLikeRepository postLikeRepository; // 💡 주입 추가
   private final CommentRepository commentRepository; // 💡 주입 추가
 
-  // 파일 업로드 경로
   @Value("${file.upload-dir}")
-  private String uploadDir;
+  private String uploadDir;// 파일 업로드 경로
 
+  //
   public InstagramPostService(
     InstagramPostRepository instagramPostRepository,
     MemberRepository memberRepository,

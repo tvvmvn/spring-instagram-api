@@ -11,6 +11,7 @@ public class AuthRequestDto {
   @Schema(description = "비밀번호", example = "password1234")
   private String password;
 
+  //
   public AuthRequestDto() {}
 
   public AuthRequestDto(String username, String password) {
@@ -22,15 +23,7 @@ public class AuthRequestDto {
     return username;
   }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
   public String getPassword() {
     return password;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
   }
 }

@@ -32,6 +32,7 @@ public class AuthController {
     
     try {
       String result = authService.register(request.getUsername(), request.getPassword());
+      
       return ResponseEntity.ok(result);
 
     } catch (IllegalArgumentException e) {

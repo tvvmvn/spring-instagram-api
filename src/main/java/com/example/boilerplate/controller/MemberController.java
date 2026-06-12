@@ -26,7 +26,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "3. 회원 프로필 관리 (Member)", description = "인스타 회원 계정의 프로필 조회 및 편집 API를 제공합니다.")
 @RestController
-@RequestMapping("/api/members")
+@RequestMapping("/api/members") // prefix
 public class MemberController {
 
   private final MemberService memberService;

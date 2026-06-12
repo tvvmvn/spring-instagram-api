@@ -14,8 +14,11 @@ public class AuthService {
   private final PasswordEncoder passwordEncoder;
   private final JwtTokenProvider jwtTokenProvider;
 
-  public AuthService(MemberRepository memberRepository, PasswordEncoder passwordEncoder,
-      JwtTokenProvider jwtTokenProvider) {
+  public AuthService(
+    MemberRepository memberRepository, 
+    PasswordEncoder passwordEncoder,
+    JwtTokenProvider jwtTokenProvider) {
+    
     this.memberRepository = memberRepository;
     this.passwordEncoder = passwordEncoder;
     this.jwtTokenProvider = jwtTokenProvider;
@@ -30,7 +33,9 @@ public class AuthService {
 
     // 비밀번호를 BCrypt로 암호화하여 저장
     String encodedPassword = passwordEncoder.encode(password);
+    
     Member member = new Member(username, encodedPassword);
+    
     memberRepository.save(member);
 
     return "회원가입이 완료되었습니다.";

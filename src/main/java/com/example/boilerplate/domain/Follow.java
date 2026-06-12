@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(uniqueConstraints = {
-    @UniqueConstraint(name = "subscribe_uk", columnNames = { "from_member_id", "to_member_id" } // 💡 중복 팔로우 방지 유니크 제약
-    )
+@Table(uniqueConstraints = { 
+  @UniqueConstraint(name = "subscribe_uk", 
+  // 💡 중복 팔로우 방지 유니크 제약
+  columnNames = { "from_member_id", "to_member_id" })
 })
 public class Follow {
 

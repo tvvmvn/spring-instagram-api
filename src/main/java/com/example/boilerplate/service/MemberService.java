@@ -79,7 +79,7 @@ public class MemberService {
             post.getHashtags(),
             post.getCreatedAt().toString()
         )).collect(Collectors.toList());
-
+    
     // 💡 레포지토리에서 팔로우, 팔로워 숫자 동적 집계
     int followingCount = followRepository.countByFromMember(member);
     int followerCount = followRepository.countByToMember(member);

@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(uniqueConstraints = {
-    @UniqueConstraint(name = "post_like_uk", columnNames = { "member_id", "post_id" } // 💡 중복 좋아요 방지 조치
-    )
+  // 💡 중복 좋아요 방지 조치
+  @UniqueConstraint(name = "post_like_uk", columnNames = { "member_id", "post_id" })
 })
 public class PostLike {
 
