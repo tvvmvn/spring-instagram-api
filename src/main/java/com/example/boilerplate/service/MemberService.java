@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.boilerplate.domain.Follow;
 import com.example.boilerplate.domain.InstagramPost;
 import com.example.boilerplate.domain.Member;
+//outer and inner class
 import com.example.boilerplate.dto.UserProfileResponseDto;
 import com.example.boilerplate.dto.UserProfileResponseDto.ProfilePostDto;
 import com.example.boilerplate.dto.UserSearchResponseDto;
@@ -94,8 +95,8 @@ public class MemberService {
     );
   }
 
-  // 💡 팔로우 / 언팔로우 실행 로직
-  @Transactional
+  // 💡 팔로우/언팔로우
+  @Transactional//readOnly=false
   public String toggleFollow(String fromUsername, String toUsername) {
     
     if (fromUsername.equals(toUsername)) {

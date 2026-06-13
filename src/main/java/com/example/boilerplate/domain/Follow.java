@@ -5,9 +5,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(uniqueConstraints = { 
-  @UniqueConstraint(name = "subscribe_uk", 
   // 💡 중복 팔로우 방지 유니크 제약
-  columnNames = { "from_member_id", "to_member_id" })
+  @UniqueConstraint(name = "subscribe_uk", columnNames = { "from_member_id", "to_member_id" })
 })
 public class Follow {
 
@@ -25,8 +24,7 @@ public class Follow {
 
   private LocalDateTime createdAt;
 
-  public Follow() {
-  }
+  public Follow() {}
 
   public Follow(Member fromMember, Member toMember) {
     this.fromMember = fromMember;

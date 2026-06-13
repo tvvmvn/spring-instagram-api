@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 @Entity
 public class Member {
 
-  @Id
+  @Id//PK
+  // PK의 생성전략. AUTO_INCREMENT
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
@@ -21,17 +22,12 @@ public class Member {
   // 💡 [추가] 한 줄 소개 필드
   private String bio = "";
 
+  //
   public Member() {}
 
   public Member(String username, String password) {
     this.username = username;
     this.password = password;
-  }
-
-  // 💡 [추가] 프로필 업데이트 편의 메서드
-  public void updateProfile(String profileImageUrl, String bio) {
-    this.profileImageUrl = profileImageUrl;
-    this.bio = bio;
   }
 
   public Long getId() {
@@ -52,5 +48,11 @@ public class Member {
 
   public String getBio() {
     return bio;
+  }
+
+  // 💡 [추가] 프로필 업데이트 편의 메서드
+  public void updateProfile(String profileImageUrl, String bio) {
+    this.profileImageUrl = profileImageUrl;
+    this.bio = bio;
   }
 }

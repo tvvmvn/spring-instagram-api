@@ -6,6 +6,8 @@ public class UserSearchResponseDto {
   private String profileImageUrl;
   private String bio;
 
+  public UserSearchResponseDto() {}
+
   public UserSearchResponseDto(String username, String profileImageUrl, String bio) {
     this.username = username;
     this.profileImageUrl = profileImageUrl;

@@ -11,6 +11,8 @@ public class InstagramPostResponseDto {
   private String createdAt;
   private int likeCount; // 💡 추가됨
 
+  public InstagramPostResponseDto() {}
+
   public InstagramPostResponseDto(Long id, String imageUrl, String caption, String hashtags, String author, String createdAt, int likeCount) {
     this.id = id;
     this.imageUrl = imageUrl;

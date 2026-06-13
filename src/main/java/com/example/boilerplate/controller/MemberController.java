@@ -90,14 +90,10 @@ public class MemberController {
   }
 
   // 사용자 검색하기
-  @Operation(
-      summary = "사용자 검색", 
-      description = "유저네임(아이디)의 일부를 입력받아 일치하는 회원 목록을 리스트로 반환합니다."
-  )
+  @Operation(summary = "사용자 검색", description = "유저네임(아이디)의 일부를 입력받아 일치하는 회원 목록을 리스트로 반환합니다.")
   @GetMapping("/search")
   public ResponseEntity<List<UserSearchResponseDto>> searchUsers(
-      @RequestParam("keyword") String keyword
-  ) {
+    @RequestParam("keyword") String keyword) {
 
     List<UserSearchResponseDto> result = memberService.searchUsers(keyword);
     

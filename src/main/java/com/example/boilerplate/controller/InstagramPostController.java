@@ -68,7 +68,7 @@ public class InstagramPostController {
     // 로그인한 내 유저네임 획득
     String username = userDetails.getUsername();
 
-    List<InstagramPostResponseDto> timeline = instagramPostService.getTimelineWithLikeCount(username);
+    List<InstagramPostResponseDto> timeline = instagramPostService.getTimeline(username);
     
     return ResponseEntity.ok(timeline);
   }
@@ -100,16 +100,16 @@ public class InstagramPostController {
     List<CommentResponseDto> comments = instagramPostService.getComments(postId);
     
     return ResponseEntity.ok(comments);
+    // no catch.. then 500
   }
 
   // 댓글 쓰기
   @Operation(summary = "댓글 작성", description = "특정 게시글 ID를 지정하여 인증된 계정 명의로 댓글을 등록합니다.")
   @PostMapping("/{postId}/comments")
   public ResponseEntity<?> createComment(
-      @PathVariable("postId") Long postId,
-      @RequestBody CommentRequestDto requestDto,
-      @AuthenticationPrincipal UserDetails userDetails
-  ) {
+    @PathVariable("postId") Long postId,
+    @RequestBody CommentRequestDto requestDto,
+    @AuthenticationPrincipal UserDetails userDetails) {
 
     try {
       String username = userDetails.getUsername();

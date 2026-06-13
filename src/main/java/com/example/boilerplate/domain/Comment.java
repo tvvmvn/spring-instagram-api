@@ -10,7 +10,7 @@ public class Comment {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(nullable = false, columnDefinition = "TEXT")
+  @Column(nullable = false, length = 200)
   private String content; // 댓글 내용
 
   @ManyToOne(fetch = FetchType.LAZY)

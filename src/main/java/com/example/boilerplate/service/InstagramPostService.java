@@ -54,8 +54,7 @@ public class InstagramPostService {
     this.commentRepository = commentRepository;
   }
 
-  // 게시물 올리기
-  @Transactional
+  @Transactional// readOnly=false
   public Long uploadFeed(MultipartFile imageFile, String caption, String hashtags, String username) 
     throws IOException {
 
@@ -67,8 +66,14 @@ public class InstagramPostService {
       throw new IllegalArgumentException("업로드할 사진 파일이 누락되었습니다.");
     }
 
+    // 💡 이미지 파일 확장자 또는 MIME 타입 체크
+    String contentType = imageFile.getContentType();
+    if (contentType == null || !contentType.startsWith("image/")) {
+      throw new IllegalArgumentException("이미지 파일(jpeg, png, gif 등)만 업로드 가능합니다.");
+    }
+
     // 1. 저장할 디렉토리 생성 검증
-    File dir = new File(uploadDir);
+    File dir = new File(uploadDir);//폴더
     if (!dir.exists()) {
       dir.mkdirs();
     }
@@ -91,7 +96,7 @@ public class InstagramPostService {
   }
 
   // 타임라인 가져오기
-  public List<InstagramPostResponseDto> getTimelineWithLikeCount(String username) {
+  public List<InstagramPostResponseDto> getTimeline(String username) {
 
     // 1. 현재 로그인한 내 정보 획득
     Member me = memberRepository.findByUsername(username)

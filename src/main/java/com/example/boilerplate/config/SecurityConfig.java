@@ -37,22 +37,14 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         .formLogin(AbstractHttpConfigurer::disable) // 기본 폼 로그인 차단 (인증창 누출 방지)
         .httpBasic(AbstractHttpConfigurer::disable)
-
         // JWT는 무상태성을 띄므로 세션 관리 전략을 STATELESS로 변경
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/api/auth/**").permitAll() // 화이트리스트 개방
-
             // 💡 [추가] Swagger UI 및 API Docs 관련 경로 전체 프리패스
-            .requestMatchers(
-                "/v3/api-docs/**",
-                "/swagger-ui/**",
-                "/swagger-ui.html")
-            .permitAll()
-
+            .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+            .requestMatchers("/error").permitAll()
             .anyRequest().authenticated())
-
         // 커스텀 필터를 사용자 인증 처리 핵심 전방단에 삽입
         .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
 

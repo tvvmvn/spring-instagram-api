@@ -13,13 +13,13 @@ public class InstagramPost {
   @Column(nullable = false)
   private String imageUrl; // 인스타 피드 필수 이미지 주소
 
-  @Column(columnDefinition = "TEXT")
+  @Lob
   private String caption; // 피드 본문 내용
 
   private String hashtags; // 예: "#개발자 #일상 #스프링부트"
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "member_id", nullable = false)
+  @JoinColumn(name = "member_id", nullable = false)//외래키
   private Member author; // 작성자 연관관계
 
   private LocalDateTime createdAt;

@@ -7,6 +7,8 @@ public class CommentResponseDto {
   private String author;
   private String createdAt;
 
+  public CommentResponseDto() {}
+
   public CommentResponseDto(Long id, String content, String author, String createdAt) {
     this.id = id;
     this.content = content;

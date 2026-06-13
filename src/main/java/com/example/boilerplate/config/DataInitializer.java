@@ -45,6 +45,7 @@ public class DataInitializer implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+
     // 💡 ddl-auto가 update일 때 데이터가 매번 중복 누적되는 것을 방지하기 위해, 비어있을 때만 실행되도록 방어벽을 칩니다.
     if (memberRepository.count() > 0) {
       return;
@@ -64,14 +65,16 @@ public class DataInitializer implements CommandLineRunner {
     Member son = new Member("hm_son7", encryptedPwd); // 손흥민
     son.updateProfile("/uploads/son_profile.png", "COYS! 🤍 토트넘 핫스퍼 주장 손흥민입니다.");
 
-    memberRepository.saveAll(List.of(iu, gd, son));
+    Member johndoe = new Member("johndoe", encryptedPwd);
+
+    memberRepository.saveAll(List.of(iu, gd, son, johndoe));
 
     // 2. 인스타 감성 게시물(피드) 등록
     // (※ 톰캣 정적 리소스 매핑 설정에 부합하도록 이미지 경로 세팅)
-    InstagramPost post1 = new InstagramPost("/uploads/concert.jpg", "오랜만에 스타디움 투어 콘서트! 관객 여러분 모두 감사드립니다. 💜", "#콘서트 #아이유 #행복", iu);
-    InstagramPost post2 = new InstagramPost("/uploads/fashion.jpg", "New Brand Shooting. 📸 Chanel Open.", "#fashion #ootd #GD", gd);
-    InstagramPost post3 = new InstagramPost("/uploads/football.jpg", "주말 경기 대승! 응원해주신 팬분들 덕분입니다. 감사합니다 대한민국! 🇰🇷", "#EPL #축구 #토트넘", son);
-    InstagramPost post4 = new InstagramPost("/uploads/guitar.jpg", "집에서 취미 생활 중.. 🎸 손가락이 아프네요.", "#일상 #기타 #집순이", iu);
+    InstagramPost post1 = new InstagramPost("/uploads/concert.jpg", "오랜만에 스타디움 투어 콘서트! 관객 여러분 모두 감사드립니다. 💜", "#콘서트#아이유#행복", iu);
+    InstagramPost post4 = new InstagramPost("/uploads/guitar.jpg", "집에서 취미 생활 중.. 🎸 손가락이 아프네요.", "#일상#기타#집순이", iu);
+    InstagramPost post2 = new InstagramPost("/uploads/fashion.jpg", "New Brand Shooting. 📸 Chanel Open.", "#fashion#ootd#GD", gd);
+    InstagramPost post3 = new InstagramPost("/uploads/football.jpg", "주말 경기 대승! 응원해주신 팬분들 덕분입니다. 감사합니다 대한민국! 🇰🇷", "#EPL#축구#토트넘", son);
 
     instagramPostRepository.saveAll(List.of(post1, post2, post3, post4));
 
